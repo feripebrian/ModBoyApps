@@ -54,14 +54,40 @@ CREATE TABLE `post` (
   `date_upload` datetime DEFAULT NULL,
   `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `post` */
 
 insert  into `post`(`id_post`,`id_kategori`,`kategori`,`judul`,`deskripsi_singkat`,`deskripsi`,`link`,`gambar`,`status`,`date_upload`,`date_update`) values 
 (1,1,1,'Judul game 1','Deskripsi Singkat 1','Deskripsi 1','link 1','',1,'2021-10-26 09:56:28',NULL),
 (2,2,2,'Judul app 1v','Deskripsi Singkat','Deskripsi','','',1,'2021-10-26 10:26:34','2021-10-26 11:47:44'),
-(5,NULL,2,'apps','appsv','app','app','',1,'2021-10-26 11:45:21','2021-10-26 11:47:57');
+(5,NULL,2,'apps','appsv','app','app','',1,'2021-10-26 11:45:21','2021-10-26 11:47:57'),
+(6,5,1,'Judul Game 2','Game 2','Game 2','link 2','',1,'2021-10-27 11:56:44','2021-10-27 11:57:02'),
+(7,5,1,'Judul Game 3','game 3','game 3','link 3','',1,'2021-10-27 12:00:58','2021-10-27 12:00:58');
+
+/*Table structure for table `slide` */
+
+DROP TABLE IF EXISTS `slide`;
+
+CREATE TABLE `slide` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slide_pertama` varchar(10) DEFAULT NULL,
+  `judul` varchar(50) DEFAULT NULL,
+  `deskripsi` text,
+  `gambar` text,
+  `status` int(2) DEFAULT NULL,
+  `date_upload` datetime DEFAULT NULL,
+  `date_update` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+/*Data for the table `slide` */
+
+insert  into `slide`(`id`,`slide_pertama`,`judul`,`deskripsi`,`gambar`,`status`,`date_upload`,`date_update`) values 
+(1,'active','Judul Slide 1','deskripsi','',1,'2021-10-27 12:28:27','2021-10-27 08:12:57'),
+(2,'non_active','Judul Slide 2','Deskripsi 2','',1,'2021-10-27 07:53:52','2021-10-27 08:14:40'),
+(3,'non_active','Judul Slide 3','Deskripsi 3','',1,'2021-10-27 07:55:56','2021-10-27 08:14:24'),
+(4,'non_active','Judul Slide 4','Deskripsi 4','',1,'2021-10-27 07:56:25','2021-10-27 08:14:06');
 
 /*Table structure for table `tb_log` */
 
