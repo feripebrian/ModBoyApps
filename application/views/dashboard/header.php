@@ -133,6 +133,24 @@
 								</li>
 							</ul>
 						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<ion-icon name="list-circle"></ion-icon>
+								<p>
+									SLIDE
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<?php echo anchor('dashboard/slide/listslide', '<ion-icon name="list-circle"></ion-icon><p>List Slide</p>', 'class="nav-link"') ?>
+								</li>
+								<li class="nav-item">
+									<?php echo anchor('dashboard/slide/addslide', '<ion-icon name="add-circle"></ion-icon><p>Add Slide</p>', 'class="nav-link"') ?>
+								</li>
+							</ul>
+						</li>
+
 
 						<li class="nav-header">LABELS</li>
 						<li class="nav-item">
