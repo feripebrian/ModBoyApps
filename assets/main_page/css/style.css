@@ -569,11 +569,11 @@ ul.nav li.active a:before {
 	float:left;
 }
 .tab {
-	margin-top:20px;
+	margin-top:5px;
 }
 .tab-img {
 	position:relative;
-	top:50px;
+	top:5px;
 }
 /*Portfolio-stylesheets-include-here*/
 #portfolio {

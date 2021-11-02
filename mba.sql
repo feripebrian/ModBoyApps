@@ -28,14 +28,23 @@ CREATE TABLE `kategori` (
   `date_upload` datetime DEFAULT NULL,
   `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id_kategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `kategori` */
 
 insert  into `kategori`(`id_kategori`,`kategori`,`gambar`,`status`,`date_upload`,`date_update`) values 
-(3,'Action','',1,'2021-10-26 08:54:06',NULL),
-(4,'Arcade','',1,'2021-10-26 10:22:31',NULL),
-(5,'Racing','',1,'2021-10-26 10:26:53',NULL);
+(3,'Action','',1,'2021-10-26 08:54:06','2021-10-31 12:26:38'),
+(4,'Arcade','',1,'2021-10-26 10:22:31','2021-10-31 12:26:38'),
+(5,'Racing','',1,'2021-10-26 10:26:53','2021-10-31 12:26:38'),
+(6,'Survival',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(7,'Strategi',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(8,'Sport',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(9,'Simulation',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(10,'Role Play',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(11,'Puzzel',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(12,'Casual',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(13,'Musik',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38'),
+(14,'RPG',NULL,1,'2021-10-31 12:26:38','2021-10-31 12:26:38');
 
 /*Table structure for table `post` */
 
@@ -46,6 +55,7 @@ CREATE TABLE `post` (
   `id_kategori` int(2) DEFAULT NULL,
   `kategori` int(2) DEFAULT NULL,
   `judul` varchar(100) DEFAULT NULL,
+  `versi` varchar(20) DEFAULT NULL,
   `deskripsi_singkat` text,
   `deskripsi` text,
   `link` text,
@@ -54,16 +64,17 @@ CREATE TABLE `post` (
   `date_upload` datetime DEFAULT NULL,
   `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `post` */
 
-insert  into `post`(`id_post`,`id_kategori`,`kategori`,`judul`,`deskripsi_singkat`,`deskripsi`,`link`,`gambar`,`status`,`date_upload`,`date_update`) values 
-(1,1,1,'Judul game 1','Deskripsi Singkat 1','Deskripsi 1','link 1','',1,'2021-10-26 09:56:28',NULL),
-(2,2,2,'Judul app 1v','Deskripsi Singkat','Deskripsi','','',1,'2021-10-26 10:26:34','2021-10-26 11:47:44'),
-(5,NULL,2,'apps','appsv','app','app','',1,'2021-10-26 11:45:21','2021-10-26 11:47:57'),
-(6,5,1,'Judul Game 2','Game 2','Game 2','link 2','',1,'2021-10-27 11:56:44','2021-10-27 11:57:02'),
-(7,5,1,'Judul Game 3','game 3','game 3','link 3','',1,'2021-10-27 12:00:58','2021-10-27 12:00:58');
+insert  into `post`(`id_post`,`id_kategori`,`kategori`,`judul`,`versi`,`deskripsi_singkat`,`deskripsi`,`link`,`gambar`,`status`,`date_upload`,`date_update`) values 
+(1,3,1,'Judul game 1',NULL,'Deskripsi Singkat 1','<p>Deskripsi 1</p>\r\n','link 1','http://localhost/ModBoyApps/source/APPS/01.jpg',1,'2021-10-26 09:56:28','2021-10-28 08:10:58'),
+(2,2,2,'Judul app 1v',NULL,'Deskripsi Singkat','<p>Deskripsi</p>\r\n','','http://localhost/ModBoyApps/source/APPS/05.jpg',1,'2021-10-26 10:26:34','2021-10-28 08:27:22'),
+(5,NULL,2,'Apps',NULL,'appsv','<p>app</p>\r\n','app','http://localhost/ModBoyApps/source/APPS/05.jpg',1,'2021-10-26 11:45:21','2021-10-28 08:27:28'),
+(6,5,1,'Judul Game 2',NULL,'Game 2','<p>Game 2</p>\r\n','link 2','http://localhost/ModBoyApps/source/APPS/02.jpg',1,'2021-10-27 11:56:44','2021-10-28 08:10:53'),
+(7,5,1,'Judul Game 3',NULL,'game 3','<p>game 3</p>\r\n','link 3','http://localhost/ModBoyApps/source/APPS/03.jpg',1,'2021-10-27 12:00:58','2021-10-28 07:29:03'),
+(8,3,1,'Judul Game 21',NULL,'ssss','<p><img alt=\"\" src=\"http://localhost/ModBoyApps/source/Capture.png\" style=\"height:206px; width:500px\" /></p>\r\n\r\n<p>ffdsfgsdfgdfgkdfgdfgdf</p>\r\n','sdfsdf','http://localhost/ModBoyApps/source/APPS/04.jpg',1,'2021-10-28 06:58:55','2021-10-28 07:29:11');
 
 /*Table structure for table `slide` */
 
@@ -79,15 +90,15 @@ CREATE TABLE `slide` (
   `date_upload` datetime DEFAULT NULL,
   `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `slide` */
 
 insert  into `slide`(`id`,`slide_pertama`,`judul`,`deskripsi`,`gambar`,`status`,`date_upload`,`date_update`) values 
-(1,'active','Judul Slide 1','deskripsi','',1,'2021-10-27 12:28:27','2021-10-27 08:12:57'),
-(2,'non_active','Judul Slide 2','Deskripsi 2','',1,'2021-10-27 07:53:52','2021-10-27 08:14:40'),
-(3,'non_active','Judul Slide 3','Deskripsi 3','',1,'2021-10-27 07:55:56','2021-10-27 08:14:24'),
-(4,'non_active','Judul Slide 4','Deskripsi 4','',1,'2021-10-27 07:56:25','2021-10-27 08:14:06');
+(1,'active','Judul Slide 1','<p>deskripsi</p>\r\n','http://localhost/ModBoyApps/source/SLIDE/01.jpg',1,'2021-10-27 12:28:27','2021-10-28 07:09:49'),
+(2,'non_active','Judul Slide 2','<p>Deskripsi 2</p>\r\n','http://localhost/ModBoyApps/source/SLIDE/02.jpg',1,'2021-10-27 07:53:52','2021-10-28 07:13:51'),
+(3,'non_active','Judul Slide 3','<p>Deskripsi 3</p>\r\n','http://localhost/ModBoyApps/source/SLIDE/03.jpg',1,'2021-10-27 07:55:56','2021-10-28 07:14:02'),
+(4,'non_active','Judul Slide 4','<p>Deskripsi 4</p>\r\n','http://localhost/ModBoyApps/source/SLIDE/04.jpg',1,'2021-10-27 07:56:25','2021-10-28 07:25:32');
 
 /*Table structure for table `tb_log` */
 

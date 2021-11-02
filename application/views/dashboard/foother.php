@@ -52,6 +52,16 @@
 <script src="<?php echo base_url() ?>assets/lte3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo base_url() ?>assets/lte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Page specific script -->
+
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/lte3/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+	CKEDITOR.replace('editor-ckeditor', {
+		filebrowserBrowseUrl: '<?php echo base_url(); ?>filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+		filebrowserUploadUrl: '<?php echo base_url(); ?>filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+		filebrowserImageBrowseUrl: '<?php echo base_url(); ?>filemanager/dialog.php?type=1&editor=ckeditor&fldr='
+	});
+</script>
+
 <script>
 	$(function() {
 		$("#example1").DataTable({

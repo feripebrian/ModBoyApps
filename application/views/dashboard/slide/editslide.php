@@ -43,17 +43,37 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="inputdeskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+						<label class="col-sm-2 col-form-label">Deskripsi</label>
 						<div class="col-sm-10">
-							<?php echo form_textarea('deskripsi', $row['deskripsi'], 'class="form-control" id="inputdeskripsi" placeholder="Deskripsi"') ?>
+							<?php echo form_textarea('deskripsi', $row['deskripsi'], 'class="form-control" id="editor-ckeditor" placeholder="Deskripsi"') ?>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="inputgambar" class="col-sm-2 col-form-label">Gambar</label>
 						<div class="col-sm-10">
-							<?php echo form_upload('gambar', $row['gambar'], 'type="file" class="custom-file-input" id="inputgambar" placeholder="Gambar"') ?>
-							<label class="custom-file-label" for="inputgambar">Choose file</label>
+							<?php echo form_input('gambar', $row['gambar'], 'class="form-control" id="gambar" placeholder="Gambar"') ?>
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-xl">
+								Choose file
+							</button>
 						</div>
+						<div class="modal fade" id="modal-xl">
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">File Manager</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<iframe width="100%" height="400" src="<?php echo base_url() ?>filemanager/dialog.php?type=1&amp;field_id=gambar'&amp;fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+						<!-- /.modal -->
 					</div>
 
 					<div class="form-group row">

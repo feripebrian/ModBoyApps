@@ -192,6 +192,11 @@ class Konten_model extends CI_Model
 		$data = $this->db->query("SELECT * FROM post WHERE kategori='1' AND status='1' ORDER BY date_update DESC LIMIT 5;");
 		return $data->result_array();
 	}
+	function game_judul()
+	{
+		$data = $this->db->query("SELECT judul FROM post WHERE kategori='1' AND status='1';");
+		return $data->result_array();
+	}
 
 	function game_show()
 	{
@@ -210,6 +215,7 @@ class Konten_model extends CI_Model
 			"id_kategori"		=> $this->input->post('id_kategori'),
 			"kategori"			=> '1',
 			"judul"    			=> $this->input->post('judul'),
+			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
@@ -233,6 +239,7 @@ class Konten_model extends CI_Model
 			"id_kategori"		=> $this->input->post('id_kategori'),
 			"kategori"			=> '1',
 			"judul"    			=> $this->input->post('judul'),
+			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
@@ -255,6 +262,11 @@ class Konten_model extends CI_Model
 		$data = $this->db->query("SELECT * FROM post WHERE kategori='2' AND status='1' ORDER BY date_update DESC LIMIT 5;");
 		return $data->result_array();
 	}
+	function app_judul()
+	{
+		$data = $this->db->query("SELECT judul FROM post WHERE kategori='2' AND status='1';");
+		return $data->result_array();
+	}
 	function app_show()
 	{
 		$data = $this->db->query("SELECT * FROM post WHERE kategori='2';");
@@ -266,6 +278,7 @@ class Konten_model extends CI_Model
 		$data = array(
 			"kategori"			=> '2',
 			"judul"    			=> $this->input->post('judul'),
+			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
@@ -288,6 +301,7 @@ class Konten_model extends CI_Model
 		$data = array(
 			"kategori"			=> '2',
 			"judul"    			=> $this->input->post('judul'),
+			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
@@ -305,6 +319,11 @@ class Konten_model extends CI_Model
 	}
 
 	// ========================================= SLIDE =========================================
+	function slide_front()
+	{
+		$data = $this->db->query("SELECT * FROM  slide WHERE status='1';");
+		return $data->result_array();
+	}
 	function slide_show()
 	{
 		$data = $this->db->query("SELECT * FROM  slide;");
