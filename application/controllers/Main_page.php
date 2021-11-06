@@ -15,6 +15,7 @@ class Main_page extends CI_Controller
 			'game'			=> $this->konten_model->game_front(),
 			'kategori'		=> $this->konten_model->kategori_front(),
 			'app'			=> $this->konten_model->app_front(),
+			'media'			=> $this->konten_model->media_front(),
 		);
 		$this->load->view('header', $title);
 		$this->load->view('main_page', $data);

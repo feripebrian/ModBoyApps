@@ -368,4 +368,81 @@ class Konten_model extends CI_Model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	// ========================================= SOCIALMEDIA =========================================
+	function media_front()
+	{
+		$data = $this->db->query("SELECT * FROM  socialmedia WHERE status='1';");
+		return $data->result_array();
+	}
+	function media_show()
+	{
+		$data = $this->db->query("SELECT * FROM  socialmedia;");
+		return $data->result_array();
+	}
+
+	function tambah_media()
+	{
+		$data = array(
+			"nama"			=> $this->input->post('nama'),
+			"link"			=> $this->input->post('link'),
+			"status"		=> $this->input->post('status'),
+			"date_upload"	=> date('Y-m-d H:i:s'),
+			"date_update"	=> date('Y-m-d H:i:s'),
+		);
+		$this->db->insert('socialmedia', $data);
+	}
+
+	function media_edit($id)
+	{
+		$data = $this->db->query("SELECT * FROM socialmedia where id='$id'");
+		return $data->result_array();
+	}
+
+	function update_media($id)
+	{
+		$data = array(
+			"nama"			=> $this->input->post('nama'),
+			"link"			=> $this->input->post('link'),
+			"status"		=> $this->input->post('status'),
+			"date_update"	=> date('Y-m-d H:i:s'),
+		);
+		$this->db->where('id', $id);
+		$this->db->update('socialmedia', $data);
+	}
+
+	function hapus_media($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	// ========================================= META =========================================
+
+	function meta_show()
+	{
+		$data = $this->db->query("SELECT * FROM  meta;");
+		return $data->result_array();
+	}
+
+	function update_meta($id)
+	{
+		$data = array(
+			"title"			=> $this->input->post('title'),
+			"description"	=> $this->input->post('description'),
+			"icon_32"		=> $this->input->post('icon_32'),
+			"icon_128"		=> $this->input->post('icon_128'),
+			"icon_192"		=> $this->input->post('icon_192'),
+			"date_update"	=> date('Y-m-d H:i:s'),
+		);
+		$this->db->where('id', $id);
+		$this->db->update('meta', $data);
+	}
+
+	// ========================================= Show =========================================
+	function show($id_post)
+	{
+		$data = $this->db->query("SELECT * FROM  post WHERE id_post=$id_post;");
+		return $data->result_array();
+	}
 }

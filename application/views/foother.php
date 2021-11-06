@@ -1,13 +1,13 @@
 <footer id="footer-down">
 	<h2>Follow Us On</h2>
 	<ul class="social-icon">
-		<li class="facebook hvr-pulse"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-		<li class="twitter hvr-pulse"><a href="#"><i class="fa fa-twitter"></i></a></li>
-		<li class="linkedin hvr-pulse"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-		<li class="google-plus hvr-pulse"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-		<li class="youtube hvr-pulse"><a href="#"><i class="fa fa-youtube"></i></a></li>
-		<li class="instagram hvr-pulse"><a href="#"><i class="fa fa-instagram"></i></a></li>
-		<li class="behance hvr-pulse"><a href="#"><i class="fa fa-behance"></i></a></li>
+		<?php foreach($media as $med){?>
+			<li class="<?php echo $med['nama']?> hvr-pulse">
+				<a href="<?php echo $med['link']?>">
+					<i class="fa fa-<?php echo $med['nama']?>"></i>
+				</a>
+			</li>
+		<?php }?>
 	</ul>
 	<p> &copy; Copyright 2021 Created By : ModBoyApk </p>
 </footer>

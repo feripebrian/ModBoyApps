@@ -56,7 +56,10 @@
 							<tr>
 								<td><?php echo $search['judul'] ?></td>
 								<td><?php echo $search['versi'] ?></td>
-								<td><a class="btn btn-info" style="padding: 10px;" href="#">View</a> <a class="btn btn-success" style="padding: 10px;" href="#">Download</a></td>
+								<td>
+									<?php echo anchor('show/apps/' . $search['id_post'], 'View', 'class="btn btn-info" style="padding: 10px;"') ?>
+									<?php echo anchor($search['link'], 'Download', ' class="btn btn-success" style="padding: 10px;" target="_blank"') ?>
+								</td>
 							</tr>
 						<?php } ?>
 					</tbody>
@@ -88,12 +91,10 @@
 				<?php foreach ($game as $g) { ?>
 					<div class="col-md-3 blog-sec" style="padding-bottom: 10px;">
 						<div class="blog-info"> <img src="<?php echo $g['gambar'] ?>" class="img-responsive" alt="">
-							<a href="#">
-								<h5><?php echo $g['judul'] ?></h5>
-							</a>
+							<?php echo anchor('show/apps/' . $g['id_post'], '<h5>' . $g['judul'] . '</h5>', '') ?>
 							<p><?php echo $g['deskripsi_singkat'] ?></p>
 							<div class="heading">
-								<a class="btn btn-danger" style="padding: 10px 100px;" href="#">Download</a>
+								<?php echo anchor($g['link'], 'Download', 'class="btn btn-danger" style="padding: 10px 100px;"') ?>
 							</div>
 						</div>
 					</div>
@@ -128,14 +129,59 @@
 		<div class="row">
 			<div class="features-sec">
 				<?php foreach ($kategori as $row_kategori) { ?>
-					<div class="col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
-						<div class="media service-box">
-							<div class="pull-left"> <img style="max-height: 64px;" src="<?php echo base_url() ?>assets/main_page/images/icon/arcade.png"> </div>
-							<div class="media-body">
+					<div class="col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="5ms">
+						<div class="col-md-12">
+							<div class="media service-box">
+								<div class="col-md-5">
+									<div class="pull-left"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
+								</div>
+								<div class="col-md-7">
 
-								<a href="">
-									<h5 class="media-heading" style="line-height: 64px;"><?php echo $row_kategori['kategori'] ?></h5>
-								</a>
+									<div class="media-body">
+										<button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>"><?php echo $row_kategori['kategori'] ?></button>
+										<div class="modal fade bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+											<div class="modal-dialog modal-lg" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title">Modal title</h4>
+													</div>
+													<div class="modal-body">
+														<div class="features-sec">
+															<div class="row">
+																<?php
+																$k = 1;
+																$id = $row_kategori['id_kategori'];
+																$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id));
+																$data = $query->result_array();
+
+																foreach ($data as $j) {
+																?>
+																	<div class="col-md-6 col-sm-6 col-xs-6">
+																		<div class="media service-box" style="margin: 5px 0px;">
+																			<div class="pull-left">
+																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
+																			</div>
+																			<div class="media-body">
+																				<h5><?php echo anchor('show/apps/' . $j['id_post'], $j['judul'], '') ?></h5>
+																				<p><?php echo  $j['versi'] ?></p>
+
+																			</div>
+																		</div>
+																	</div>
+
+																<?php } ?>
+															</div>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -151,14 +151,28 @@
 								</li>
 							</ul>
 						</li>
-
-
-						<li class="nav-header">LABELS</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">
-								<i class="nav-icon far fa-circle text-danger"></i>
-								<p class="text">Important</p>
+								<ion-icon name="list-circle"></ion-icon>
+								<p>
+									SOCIAL MEDIA
+									<i class="right fas fa-angle-left"></i>
+								</p>
 							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<?php echo anchor('dashboard/socialmedia/listmedia', '<ion-icon name="list-circle"></ion-icon><p>List Media</p>', 'class="nav-link"') ?>
+								</li>
+								<li class="nav-item">
+									<?php echo anchor('dashboard/socialmedia/addmedia', '<ion-icon name="add-circle"></ion-icon><p>Add Media</p>', 'class="nav-link"') ?>
+								</li>
+							</ul>
+						</li>
+						
+						
+						<li class="nav-header">LABELS</li>
+						<li class="nav-item">
+							<?php echo anchor('dashboard/meta/editmeta', '<i class="nav-icon far fa-circle text-info"></i><p>Meta</p>', 'class="nav-link"') ?>
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">
