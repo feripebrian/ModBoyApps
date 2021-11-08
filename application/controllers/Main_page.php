@@ -8,6 +8,7 @@ class Main_page extends CI_Controller
 	{
 		$title = array(
 			'title'			=> 'ModBoyApk',
+			'meta'			=> $this->konten_model->meta_show(),
 			'slide'			=> $this->konten_model->slide_front(),
 
 		);
@@ -20,5 +21,9 @@ class Main_page extends CI_Controller
 		$this->load->view('header', $title);
 		$this->load->view('main_page', $data);
 		$this->load->view('foother');
+	}
+	public function meta()
+	{
+		
 	}
 }

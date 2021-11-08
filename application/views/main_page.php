@@ -14,11 +14,11 @@
 					<?php foreach ($game as $row_game) { ?>
 						<div class="col-md-12">
 							<div role="tabpanel" class="tab-pane fade in active feat-sec">
-								<div class="col-md-3 tab-img">
-									<img src="<?php echo $row_game['gambar'] ?>" class="img-responsive" alt="">
+								<div class="col-md-2 tab-img">
+									<img src="<?php echo $row_game['gambar'] ?>" class="img-responsive" alt="<?php echo $row_game['judul']?>">
 								</div>
-								<div class="col-md-9 tab">
-									<?php echo anchor('show/apps/' . $row_game['id_post'], '<h5>' . $row_game['judul'] . '</h5>', '') ?>
+								<div class="col-md-8 tab">
+									<?php echo anchor('view/' . $row_game['url'], '<h5>' . $row_game['judul'] . '</h5>', '') ?>
 									<div class="line"></div>
 									<div class="clearfix"></div>
 									<p class="feat-sec"><?php echo $row_game['deskripsi_singkat'] ?></p>
@@ -35,7 +35,7 @@
 		<div class="col-md-12 ">
 			<div class="container">
 				<div class="heading" style="padding-top: 40px;">
-					<a class="btn btn-info" style="padding: 10px 100px;" href="view/views_game">Lihat Game</a>
+					<a class="btn btn-info" style="padding: 10px 100px;" href="game">Lihat Game</a>
 				</div>
 			</div>
 		</div>
@@ -62,7 +62,7 @@
 						<div class="col-md-12">
 							<div class="media service-box">
 								<div class="col-md-5">
-									<div class="pull-left"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
+									<div class="pull-center"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
 								</div>
 								<div class="col-md-7">
 
@@ -81,7 +81,7 @@
 																<?php
 																$k = 1;
 																$id = $row_kategori['id_kategori'];
-																$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id));
+																$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id, 'status' => 1));
 																$data = $query->result_array();
 
 																foreach ($data as $j) {
@@ -89,10 +89,10 @@
 																	<div class="col-md-6 col-sm-6 col-xs-6">
 																		<div class="media service-box" style="margin: 5px 0px;">
 																			<div class="pull-left">
-																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
+																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $j['judul'] ?>" class="img-circle img-responsive">
 																			</div>
 																			<div class="media-body">
-																				<h5><?php echo anchor('show/apps/' . $j['id_post'], $j['judul'], '') ?></h5>
+																				<h5><?php echo anchor('view/' . $j['url'], $j['judul'], '') ?></h5>
 																				<p><?php echo  $j['versi'] ?></p>
 
 																			</div>
@@ -154,7 +154,7 @@
 		<div class="col-md-12 ">
 			<div class="container">
 				<div class="heading" style="padding-top: 40px;">
-					<a class="btn btn-info" style="padding: 10px 100px;" href="view/views_apps">Lihat Apps</a>
+					<a class="btn btn-info" style="padding: 10px 100px;" href="apk">Lihat Apps</a>
 				</div>
 			</div>
 		</div>

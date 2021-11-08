@@ -48,7 +48,7 @@
 														<img src="<?php echo $row_game['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
 													</div>
 													<div class="media-body">
-														<h5><?php echo anchor('show/apps/' . $row_game['id_post'], $row_game['judul'], '') ?></h5>
+														<h5><?php echo anchor('view/' . $row_game['url'], $row_game['judul'], '') ?></h5>
 														<p><?php echo  $row_game['versi'] ?></p>
 
 													</div>
@@ -95,19 +95,34 @@
 												<h4 class="modal-title">Modal title</h4>
 											</div>
 											<div class="modal-body">
-												<?php
-												$k = 1;
-												$id = $row_kategori['id_kategori'];
-												$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id));
-												$data = $query->result_array();
+														<div class="features-sec">
+															<div class="row">
+																<?php
+																$k = 1;
+																$id = $row_kategori['id_kategori'];
+																$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id, 'status' => 1));
+																$data = $query->result_array();
 
-												foreach ($data as $j) {
-												?>
-													<div class="col-md-6">
-														<?php echo anchor('show/apps/' . $j['id_post'], $j['judul'], '') ?>
+																foreach ($data as $j) {
+																?>
+																	<div class="col-md-6 col-sm-6 col-xs-6">
+																		<div class="media service-box" style="margin: 5px 0px;">
+																			<div class="pull-left">
+																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $j['judul'] ?>" class="img-circle img-responsive">
+																			</div>
+																			<div class="media-body">
+																				<h5><?php echo anchor('view/' . $j['url'], $j['judul'], '') ?></h5>
+																				<p><?php echo  $j['versi'] ?></p>
+
+																			</div>
+																		</div>
+																	</div>
+
+																<?php } ?>
+															</div>
+														</div>
+
 													</div>
-												<?php } ?>
-											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 											</div>
@@ -132,7 +147,7 @@
 														<img src="<?php echo $row_app['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
 													</div>
 													<div class="media-body">
-														<h5><?php echo anchor('show/apps/' . $row_app['id_post'], $row_app['judul'], '') ?></h5>
+														<h5><?php echo anchor('view' . $row_app['url'], $row_app['judul'], '') ?></h5>
 														<p><?php echo  $row_app['versi'] ?></p>
 													</div>
 												</div>

@@ -50,5 +50,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'main_page';
+$route['game'] = 'view/views_game';
+$route['apk'] = 'view/views_apps';
+$route['view/(:any)'] = 'show/apps/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

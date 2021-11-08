@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title><?php echo $title ?></title>
+	<?php foreach ($meta as $met) { ?>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="<?php echo $met['description']?>">
+		<meta name="author" content="">
+		
+		<title><?php echo $title ?></title>
 	<!--Bootstrap-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/main_page/css/bootstrap.css">
 	<!--Stylesheets-->
@@ -26,7 +28,20 @@
 	<!--[if lt IE 9]>
     <script src="<?php echo base_url() ?>assets/main_page/js/html5shiv.js"></script>
     <script src="<?php echo base_url() ?>assets/main_page/js/respond.min.js"></script>
-  [endif]-->
+	[endif]-->
+	<?php }?>
+	    <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-212183959-1">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-212183959-1');
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3336455231711980" crossorigin="anonymous"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar-default" data-offset="100">
@@ -44,7 +59,7 @@
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-						<a class="navbar-brand" href="#menu"><img src="<?php echo base_url() ?>assets/main_page/images/Logo/01.png" alt=""></a>
+						<a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/main_page/images/Logo/01.png" alt=""></a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -52,13 +67,6 @@
 							<li class="active"><a class="scroll" href="#menu">Home</a></li>
 							<li><a class="scroll" href="#features">Game</a></li>
 							<li><a class="scroll" href="#blog">Apps</a></li>
-							<!-- <li><a class="scroll" href="#service">Service</a></li>
-							<li><a class="scroll" href="#features">Features</a></li>
-							<li><a class="scroll" href="#portfolio">Portfolio</a></li>
-							<li><a class="scroll" href="#pricing">Pricing</a></li>
-							<li><a class="scroll" href="#team">Team</a></li>
-							<li><a class="scroll" href="#blog">Blog</a></li>
-							<li><a class="scroll" href="#contact">Contact</a></li> -->
 						</ul>
 					</div>
 					<!-- /.navbar-collapse -->

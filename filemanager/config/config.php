@@ -239,7 +239,7 @@ $config = array(
     | Can be set to custom icon inside filemanager/img
     |
     */
-	'icon_theme' => "ico",
+	'icon_theme' => "ico_dark",
 
 
 	//Show or not total size in filemanager (is possible to greatly increase the calculations)

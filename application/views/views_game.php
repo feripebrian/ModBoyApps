@@ -4,7 +4,9 @@
 		<div class="col-md-12 ">
 			<div class="heading">
 				<h2>Game</h2>
-				<div class="line"></div>
+				<div class="line">
+
+				</div>
 			</div>
 		</div>
 		<div class="col-md-12 ">
@@ -16,22 +18,31 @@
 						<div class="modal-dialog modal-lg" role="document">
 							<div class="modal-content">
 								<div class="modal-body">
-									<div class="row">';
+									<div class="features-sec">
+										<div class="row">';
 			?>
-				<?php
-				$arr = array();
-				foreach ($game as $row) {
-					array_push($arr, $row['judul']);
-				}
-				foreach ($arr as $s) {
-					if ($s[0] == $c) {
-						echo '
-					<div class="col-md-4">' . $s . '</div>
-					';
-					}
-				} ?>
+			<?php 
+			$query = $this->db->get_where('post', array('kategori' => 1, 'alfabet' => $c, 'status' => 1));
+			$data = $query->result_array();
+			foreach ($data as $asd) {
+				?>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<div class="media service-box" style="margin: 5px 0px;">
+							<div class="pull-left">
+								<img src="<?php echo $asd['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
+							</div>
+							<div class="media-body">
+								<h5><?php echo anchor('view/' . $asd['url'], $asd['judul'], '') ?></h5>
+								<p><?php echo  $asd['versi'] ?></p>
+
+							</div>
+						</div>
+					</div>
+
+				<?php } ?>
 			<?php
 				echo '				
+										</div>
 									</div>
 								</div>
 							</div>
@@ -57,7 +68,7 @@
 								<td><?php echo $search['judul'] ?></td>
 								<td><?php echo $search['versi'] ?></td>
 								<td>
-									<?php echo anchor('show/apps/' . $search['id_post'], 'View', 'class="btn btn-info" style="padding: 10px;"') ?>
+									<?php echo anchor('view/' . $search['url'], 'View', 'class="btn btn-info" style="padding: 10px;"') ?>
 									<?php echo anchor($search['link'], 'Download', ' class="btn btn-success" style="padding: 10px;" target="_blank"') ?>
 								</td>
 							</tr>
@@ -91,7 +102,7 @@
 						<div class="col-md-12">
 							<div class="media service-box">
 								<div class="col-md-5">
-									<div class="pull-left"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
+									<div class="pull-center"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
 								</div>
 								<div class="col-md-7">
 
@@ -121,7 +132,7 @@
 																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="img-responsive" class="img-circle img-responsive">
 																			</div>
 																			<div class="media-body">
-																				<h5><?php echo anchor('show/apps/' . $j['id_post'], $j['judul'], '') ?></h5>
+																				<h5><?php echo anchor('view/' . $j['url'], $j['judul'], '') ?></h5>
 																				<p><?php echo  $j['versi'] ?></p>
 
 																			</div>
@@ -171,7 +182,7 @@
 					<div class="col-md-3 blog-sec" style="padding-bottom: 10px;">
 						<div class="blog-info"> <img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" alt="">
 							</a>
-							<?php echo anchor('show/apps/' . $row_app['id_post'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
+							<?php echo anchor('view/' . $row_app['url'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
 							<p><?php echo $row_app['deskripsi_singkat'] ?></p>
 							<div class="heading">
 								<?php echo anchor($row_app['link'], 'Download', 'class="btn btn-danger" style="padding: 10px 100px;"') ?>
@@ -185,7 +196,7 @@
 		<div class="col-md-12 ">
 			<div class="container">
 				<div class="heading" style="padding-top: 40px;">
-					<a class="btn btn-info" style="padding: 10px 100px;" href="views_apps">Lihat Apps</a>
+					<a class="btn btn-info" style="padding: 10px 100px;" href="apk">Lihat Apps</a>
 				</div>
 			</div>
 		</div>

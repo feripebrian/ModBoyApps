@@ -194,7 +194,7 @@ class Konten_model extends CI_Model
 	}
 	function game_judul()
 	{
-		$data = $this->db->query("SELECT judul FROM post WHERE kategori='1' AND status='1';");
+		$data = $this->db->query("SELECT * FROM post WHERE kategori='1' AND status='1';");
 		return $data->result_array();
 	}
 
@@ -221,6 +221,8 @@ class Konten_model extends CI_Model
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
+			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
+			"alfabet"			=> substr($this->input->post('judul'),0,1),
 			"date_upload"		=> date('Y-m-d H:i:s'),
 			"date_update"		=> date('Y-m-d H:i:s')
 		);
@@ -245,6 +247,8 @@ class Konten_model extends CI_Model
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
+			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
+			"alfabet"			=> substr($this->input->post('judul'),0,1),
 			"date_update"		=> date('Y-m-d H:i:s')
 		);
 		$this->db->where('id_post', $id);
@@ -284,6 +288,7 @@ class Konten_model extends CI_Model
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
+			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
 			"date_upload"		=> date('Y-m-d H:i:s'),
 			"date_update"		=> date('Y-m-d H:i:s')
 		);
@@ -307,6 +312,7 @@ class Konten_model extends CI_Model
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
+			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
 			"date_update"		=> date('Y-m-d H:i:s')
 		);
 		$this->db->where('id_post', $id);
@@ -440,9 +446,9 @@ class Konten_model extends CI_Model
 	}
 
 	// ========================================= Show =========================================
-	function show($id_post)
+	function show($url)
 	{
-		$data = $this->db->query("SELECT * FROM  post WHERE id_post=$id_post;");
+		$data = $this->db->query("SELECT * FROM  post WHERE url = '$url'");
 		return $data->result_array();
 	}
 }
