@@ -51,21 +51,26 @@ insert  into `kategori`(`id_kategori`,`kategori`,`gambar`,`status`,`date_upload`
 DROP TABLE IF EXISTS `meta`;
 
 CREATE TABLE `meta` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
   `description` text,
+  `keyword` text,
   `icon_32` text,
   `icon_128` text,
   `icon_192` text,
   `logo` varchar(50) DEFAULT NULL,
-  `date_update` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `date_upload` datetime DEFAULT NULL,
+  `date_update` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `meta` */
 
-insert  into `meta`(`id`,`title`,`description`,`icon_32`,`icon_128`,`icon_192`,`logo`,`date_update`) values 
-(1,'ModBoyApk','ModBoyApk is a completely free website, we share games, android premium apps with high-quality mods','32','128','192',NULL,'2021-11-04 11:35:33');
+insert  into `meta`(`id`,`title`,`description`,`keyword`,`icon_32`,`icon_128`,`icon_192`,`logo`,`date_upload`,`date_update`) values 
+(0,'Home','ModBoyApk is a completely free website, we share games, android premium apps with high-quality mods','1,2,3,4,5','http://localhost/ModBoyApps/source/ICON/32.png','http://localhost/ModBoyApps/source/ICON/128.png','http://localhost/ModBoyApps/source/ICON/192.png','http://localhost/ModBoyApps/source/ICON/01.jpg','2021-11-09 05:03:05','2021-11-13 13:02:29'),
+(1,'Game',NULL,'1,2,3,4,5','http://localhost/ModBoyApps/source/ICON/32.png','http://localhost/ModBoyApps/source/ICON/128.png','http://localhost/ModBoyApps/source/ICON/192.png','http://localhost/ModBoyApps/source/ICON/01.jpg',NULL,NULL),
+(2,'Apk',NULL,'1,2,3,4,5','http://localhost/ModBoyApps/source/ICON/32.png','http://localhost/ModBoyApps/source/ICON/128.png','http://localhost/ModBoyApps/source/ICON/192.png','http://localhost/ModBoyApps/source/ICON/01.jpg',NULL,NULL),
+(3,'Tutorial',NULL,'1,2,3,4,5','http://localhost/ModBoyApps/source/ICON/32.png','http://localhost/ModBoyApps/source/ICON/128.png','http://localhost/ModBoyApps/source/ICON/192.png','http://localhost/ModBoyApps/source/ICON/01.jpg',NULL,NULL),
+(5,'youtube','youtube','1,2,3,4,5','http://localhost/ModBoyApps/source/ICON/32.png','http://localhost/ModBoyApps/source/ICON/128.png','http://localhost/ModBoyApps/source/ICON/192.png','http://localhost/ModBoyApps/source/ICON/01.jpg','2021-11-13 13:10:03','2021-11-13 13:11:57');
 
 /*Table structure for table `post` */
 
@@ -73,33 +78,31 @@ DROP TABLE IF EXISTS `post`;
 
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL AUTO_INCREMENT,
-  `id_kategori` int(2) DEFAULT NULL,
+  `id_kategori` varchar(50) DEFAULT NULL,
   `kategori` int(2) DEFAULT NULL,
   `judul` varchar(100) DEFAULT NULL,
+  `keyword` text,
   `versi` varchar(20) DEFAULT NULL,
   `deskripsi_singkat` text,
   `deskripsi` text,
   `link` text,
   `gambar` varchar(100) DEFAULT NULL,
   `status` int(2) DEFAULT NULL,
-  `url` varchar(100) DEFAULT NULL,
+  `uri` varchar(100) DEFAULT NULL,
   `alfabet` varchar(5) DEFAULT NULL,
-  `date_upload` datetime DEFAULT NULL,
-  `date_update` datetime DEFAULT NULL,
+  `date_upload` date DEFAULT NULL,
+  `time_upload` time DEFAULT NULL,
+  `date_update` date DEFAULT NULL,
+  `time_update` time DEFAULT NULL,
   PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `post` */
 
-insert  into `post`(`id_post`,`id_kategori`,`kategori`,`judul`,`versi`,`deskripsi_singkat`,`deskripsi`,`link`,`gambar`,`status`,`url`,`alfabet`,`date_upload`,`date_update`) values 
-(1,3,1,'Captain Tsubasa Zero v2.4.6 MOD APK (Unlimited Stamina)',NULL,'Deskripsi Singkat 1','<p>Deskripsi 1</p>\r\n','link 1','http://localhost/ModBoyApps/source/APPS/01.jpg',1,'Captain-Tsubasa-Zero-v------MOD-APK--Unlimited-Stamina-','C','2021-10-26 09:56:28','2021-11-07 12:44:34'),
-(2,0,2,'Judul app 1v',NULL,'Deskripsi Singkat','<p>Deskripsi</p>\r\n','link','http://localhost/ModBoyApps/source/APPS/05.jpg',1,NULL,'A','2021-10-26 10:26:34','2021-10-28 08:27:22'),
-(5,0,2,'Apps',NULL,'appsv','<p>app</p>\r\n','app','http://localhost/ModBoyApps/source/APPS/05.jpg',1,NULL,'A','2021-10-26 11:45:21','2021-10-28 08:27:28'),
-(6,5,1,'Judul Game 2',NULL,'Game 2','<p>Game 2</p>\r\n','link 2','http://localhost/ModBoyApps/source/APPS/02.jpg',1,NULL,'J','2021-10-27 11:56:44','2021-10-28 08:10:53'),
-(7,5,1,'Judul Game 3',NULL,'game 3','<p>game 3</p>\r\n','link 3','http://localhost/ModBoyApps/source/APPS/03.jpg',1,NULL,'J','2021-10-27 12:00:58','2021-10-28 07:29:03'),
-(8,3,1,'Judul Game 21',NULL,'ssss','<p><strong>L</strong>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.Lorem Ipsum is simply dummy text of the printing and typesetting industry. book.</p>\r\n','sdfsdf','http://localhost/ModBoyApps/source/APPS/04.jpg',1,NULL,'J','2021-10-28 06:58:55','2021-11-03 06:02:32'),
-(9,3,1,'Game',NULL,'as','<p>as</p>\r\n','link','http://localhost/ModBoyApps/source/APPS/05.jpg',1,NULL,'G','2021-11-04 08:40:17','2021-11-04 08:40:17'),
-(10,3,1,'Game','versi','sdf','','','http://localhost/ModBoyApps/source/APPS/05.jpg',1,'1','G','2021-11-04 09:17:11','2021-11-04 09:17:11');
+insert  into `post`(`id_post`,`id_kategori`,`kategori`,`judul`,`keyword`,`versi`,`deskripsi_singkat`,`deskripsi`,`link`,`gambar`,`status`,`uri`,`alfabet`,`date_upload`,`time_upload`,`date_update`,`time_update`) values 
+(12,'3,4,5,6,7,8,9,10,11,12,13,14',1,'Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All) ','1,2,3,4,5',NULL,'Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All) ','<h1>Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All)</h1>\r\n','Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All) ','http://localhost/ModBoyApps/source/ICON/192.png',1,'drive-aheads','D','2021-11-09','07:53:42','2021-11-13','11:58:34'),
+(13,'2,4',2,'Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All) APP','1,2,3,4,5',NULL,'Worms Zone io, game cacing yang saat ini tengah naik daun dan menjadi game populer dikalangan para pecinta game. Dimana-mana banyak orang yang memainkan game cacing Worms Zone io. Tampilannya yang sederhana namun dengan grafik yang halus dan mudah untuk dimainkan, membuat game ini banyak disukai baik dikalangan anak-anak maupun orang dewasa. Bikin ketagihan, itulah yang dirasakan oleh para pemain game Worms Zone io.','<h1>Drive Ahead! v3.9.1 MOD APK (Mega Menu/Unlocked All)</h1>\r\n','','http://localhost/ModBoyApps/source/ICON/192.png',1,'drive-aheads','D','2021-11-09','07:53:42','2021-11-13','11:59:02'),
+(14,'3,4,5,6,7,8,9,10,11,12,13,14',1,'Worms Zone.io v2.3.4-c MOD APK (Unlimited Coins/Skins Unlock)','Worms Zone.io, game mod, mod',NULL,'Worms Zone io, game cacing yang saat ini tengah naik daun dan menjadi game populer dikalangan para pecinta game. Dimana-mana banyak orang yang memainkan game cacing Worms Zone io. Tampilannya yang sederhana namun dengan grafik yang halus dan mudah untuk dimainkan, membuat game ini banyak disukai baik dikalangan anak-anak maupun orang dewasa. Bikin ketagihan, itulah yang dirasakan oleh para pemain game Worms Zone io.','<p>Worms Zone io, game cacing yang saat ini tengah naik daun dan menjadi game populer dikalangan para pecinta game. Dimana-mana banyak orang yang memainkan game cacing Worms Zone io. Tampilannya yang sederhana namun dengan grafik yang halus dan mudah untuk dimainkan, membuat game ini banyak disukai baik dikalangan anak-anak maupun orang dewasa. Bikin ketagihan, itulah yang dirasakan oleh para pemain game Worms Zone io.</p>\r\n','','http://localhost/ModBoyApps/source/KATEGORI/arcade.png',1,'worms-zone','W','2021-11-13','11:54:39','2021-11-13','11:54:39');
 
 /*Table structure for table `slide` */
 
@@ -186,6 +189,36 @@ CREATE TABLE `tb_user` (
 
 insert  into `tb_user`(`id`,`id_user`,`username`,`password`,`nama`,`email`,`katerangan`,`status`,`foto`,`akses`) values 
 (10,10,'feri','4c850dbd4128e75d16f407a9188e2aab','Feri Pebriansah Nugraha','feripebriansah@gmail.com',NULL,'1',NULL,'1');
+
+/*Table structure for table `tutorial` */
+
+DROP TABLE IF EXISTS `tutorial`;
+
+CREATE TABLE `tutorial` (
+  `id_post` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kategori` varchar(50) DEFAULT NULL,
+  `kategori` int(2) DEFAULT NULL,
+  `judul` varchar(100) DEFAULT NULL,
+  `deskripsi_singkat` text,
+  `keyword` text,
+  `deskripsi` text,
+  `link` text,
+  `gambar` varchar(100) DEFAULT NULL,
+  `status` enum('0','1') DEFAULT NULL,
+  `uri` varchar(100) DEFAULT NULL,
+  `date_upload` date DEFAULT NULL,
+  `time_upload` time DEFAULT NULL,
+  `date_update` date DEFAULT NULL,
+  `time_update` time DEFAULT NULL,
+  PRIMARY KEY (`id_post`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tutorial` */
+
+insert  into `tutorial`(`id_post`,`id_kategori`,`kategori`,`judul`,`deskripsi_singkat`,`keyword`,`deskripsi`,`link`,`gambar`,`status`,`uri`,`date_upload`,`time_upload`,`date_update`,`time_update`) values 
+(2,NULL,3,'TUTORIAL 1','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing','1,2,3,4,5','<p>TUTORIAL 1</p>\r\n',NULL,'http://localhost/ModBoyApps/source/TUTORIAL/192.png','1','tutorial-1','2021-11-12','04:34:55','2021-11-13','12:07:13'),
+(3,NULL,3,'TUTORIAL 2','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing\r\n\r\nLorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound ','1,2,3,4,5','<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</p>\r\n\r\n<p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound</p>\r\n',NULL,'http://localhost/ModBoyApps/source/SLIDE/05.jpg','1','tutorial-2','2021-11-12','05:05:54','2021-11-13','12:05:54'),
+(4,NULL,3,'TUTORIAL 1 a','TUTORIAL 1 a','1,2,3,4,5','<p>TUTORIAL 1 a</p>\r\n',NULL,'TUTORIAL 1 a','1','tutorial-1-a','2021-11-12','11:29:46','2021-11-13','12:05:57');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
