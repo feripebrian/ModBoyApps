@@ -158,7 +158,7 @@ class Konten_model extends CI_Model
 			"kategori"	=> $this->input->post('kategori'),
 			"gambar"    => $this->input->post('gambar'),
 			"status"    => $this->input->post('status'),
-			"date_upload" => date('Y-m-d H:i:s')
+			"date_upload" => date('Y-m-d') . ' ' . date('H:i:s')
 		);
 		$this->db->insert('kategori', $data);
 	}
@@ -175,7 +175,7 @@ class Konten_model extends CI_Model
 			"kategori"		=> $this->input->post('kategori'),
 			"gambar"		=> $this->input->post('gambar'),
 			"status"		=> $this->input->post('status'),
-			"date_update"	=> date('Y-m-d H:i:s')
+			"date_update"	=> date('Y-m-d') . ' ' . date('H:i:s')
 		);
 		$this->db->where('id_kategori', $id);
 		$this->db->update('kategori', $data);
@@ -212,19 +212,22 @@ class Konten_model extends CI_Model
 	function tambah_game()
 	{
 		$data = array(
-			"id_kategori"		=> $this->input->post('id_kategori'),
+			"id_kategori"		=> implode(",", $this->input->post('id_kategori')),
 			"kategori"			=> '1',
 			"judul"    			=> $this->input->post('judul'),
+			"keyword"    		=> $this->input->post('keyword'),
 			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
-			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
-			"alfabet"			=> substr($this->input->post('judul'),0,1),
-			"date_upload"		=> date('Y-m-d H:i:s'),
-			"date_update"		=> date('Y-m-d H:i:s')
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"alfabet"			=> substr($this->input->post('judul'), 0, 1),
+			"date_upload"		=> date('Y-m-d'),
+			"time_upload"		=> date('H:i:s'),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
 		);
 		$this->db->insert('post', $data);
 	}
@@ -237,19 +240,22 @@ class Konten_model extends CI_Model
 
 	function update_game($id)
 	{
+
 		$data = array(
-			"id_kategori"		=> $this->input->post('id_kategori'),
+			"id_kategori"		=> implode(",", $this->input->post('id_kategori')),
 			"kategori"			=> '1',
 			"judul"    			=> $this->input->post('judul'),
+			"keyword"    		=> $this->input->post('keyword'),
 			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
-			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
-			"alfabet"			=> substr($this->input->post('judul'),0,1),
-			"date_update"		=> date('Y-m-d H:i:s')
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"alfabet"			=> substr($this->input->post('judul'), 0, 1),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
 		);
 		$this->db->where('id_post', $id);
 		$this->db->update('post', $data);
@@ -282,15 +288,19 @@ class Konten_model extends CI_Model
 		$data = array(
 			"kategori"			=> '2',
 			"judul"    			=> $this->input->post('judul'),
+			"keyword"    		=> $this->input->post('keyword'),
 			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
-			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
-			"date_upload"		=> date('Y-m-d H:i:s'),
-			"date_update"		=> date('Y-m-d H:i:s')
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"alfabet"			=> substr($this->input->post('judul'), 0, 1),
+			"date_upload"		=> date('Y-m-d'),
+			"time_upload"		=> date('H:i:s'),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
 		);
 		$this->db->insert('post', $data);
 	}
@@ -306,19 +316,94 @@ class Konten_model extends CI_Model
 		$data = array(
 			"kategori"			=> '2',
 			"judul"    			=> $this->input->post('judul'),
+			"keyword"    		=> $this->input->post('keyword'),
 			"versi"    			=> $this->input->post('versi'),
 			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"link"				=> $this->input->post('link'),
 			"gambar"			=> $this->input->post('gambar'),
 			"status"			=> $this->input->post('status'),
-			"url"	  			=> preg_replace("/[^a-zA-Z]/", "-", $this->input->post('judul')),
-			"date_update"		=> date('Y-m-d H:i:s')
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"alfabet"			=> substr($this->input->post('judul'), 0, 1),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
 		);
 		$this->db->where('id_post', $id);
 		$this->db->update('post', $data);
 	}
 	function hapus_app($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	// ========================================= TUTORIAL =========================================
+	function tutorial_front()
+	{
+		$data = $this->db->query("SELECT * FROM tutorial WHERE status='1' ORDER BY date_update DESC LIMIT 5;");
+		return $data->result_array();
+	}
+	function tutorial_judul()
+	{
+		$data = $this->db->query("SELECT * FROM tutorial WHERE status='1';");
+		return $data->result_array();
+	}
+
+	function tutorial_show()
+	{
+		$data = $this->db->query("SELECT * FROM tutorial;");
+		return $data->result_array();
+	}
+	// function kategori_game()
+	// {
+	// 	$data = $this->db->query("SELECT * FROM kategori WHERE status='1';");
+	// 	return $data->result_array();
+	// }
+
+	function tambah_tutorial()
+	{
+		$data = array(
+			"kategori"			=> '3',
+			"judul"    			=> $this->input->post('judul'),
+			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
+			"keyword"			=> $this->input->post('keyword'),
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"gambar"			=> $this->input->post('gambar'),
+			"status"			=> $this->input->post('status'),
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"date_upload"		=> date('Y-m-d'),
+			"time_upload"		=> date('H:i:s'),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
+		);
+		$this->db->insert('tutorial', $data);
+	}
+
+	function tutorial_edit($id)
+	{
+		$data = $this->db->query("SELECT * FROM tutorial where id_post='$id'");
+		return $data->result_array();
+	}
+
+	function update_tutorial($id)
+	{
+
+		$data = array(
+			"kategori"			=> '3',
+			"judul"    			=> $this->input->post('judul'),
+			"deskripsi_singkat"	=> $this->input->post('deskripsi_singkat'),
+			"keyword"			=> $this->input->post('keyword'),
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"gambar"			=> $this->input->post('gambar'),
+			"status"			=> $this->input->post('status'),
+			"uri"	  			=> preg_replace("/ /", "-", strtolower($this->input->post('uri'))),
+			"date_update"		=> date('Y-m-d'),
+			"time_update"		=> date('H:i:s')
+		);
+		$this->db->where('id_post', $id);
+		$this->db->update('tutorial', $data);
+	}
+	function hapus_tutorial($where, $table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);
@@ -425,20 +510,84 @@ class Konten_model extends CI_Model
 
 	// ========================================= META =========================================
 
+	function meta_home()
+	{
+		$data = $this->db->query("SELECT * FROM  meta WHERE	id=0 ");
+		return $data->result_array();
+	}
+	function meta_game()
+	{
+		$data = $this->db->query("SELECT * FROM  meta WHERE	id=1 ");
+		return $data->result_array();
+	}
+	function meta_apk()
+	{
+		$data = $this->db->query("SELECT * FROM  meta WHERE	id=2");
+		return $data->result_array();
+	}
+	function meta_tutorial()
+	{
+		$data = $this->db->query("SELECT * FROM  meta WHERE	id=3 ");
+		return $data->result_array();
+	}
+
+
+	function show_meta_apps($kategori, $uri)
+	{
+		$data = $this->db->query("SELECT post.judul AS title, 
+											post.deskripsi_singkat AS deskripsi,
+											post.keyword AS keyword,
+											meta.logo AS logo,
+											meta.icon_32 AS icon_32 FROM post INNER JOIN meta ON post.kategori = meta.id WHERE post.kategori = $kategori AND post.uri = '$uri' ;");
+		return $data->result_array();
+	}
+	function show_meta_tutorial($uri)
+	{
+		$data = $this->db->query("SELECT tutorial.judul AS title, 
+											tutorial.deskripsi_singkat AS deskripsi,
+											tutorial.keyword AS keyword,
+											meta.logo AS logo,
+											meta.icon_32 AS icon_32
+											FROM tutorial INNER JOIN meta ON tutorial.kategori = meta.id WHERE tutorial.kategori = 3 AND tutorial.uri = '$uri' ;");
+		return $data->result_array();
+	}
+
+
 	function meta_show()
 	{
 		$data = $this->db->query("SELECT * FROM  meta;");
 		return $data->result_array();
 	}
-
+	function meta_edit($id)
+	{
+		$data = $this->db->query("SELECT * FROM meta where id='$id'");
+		return $data->result_array();
+	}
+	function tambah_meta()
+	{
+		$data = array(
+			"title"			=> $this->input->post('title'),
+			"description"	=> $this->input->post('description'),
+			"keyword"		=> $this->input->post('keyword'),
+			"icon_32"		=> $this->input->post('icon_32'),
+			"icon_128"		=> $this->input->post('icon_128'),
+			"icon_192"		=> $this->input->post('icon_192'),
+			"logo"			=> $this->input->post('logo'),
+			"date_upload"	=> date('Y-m-d H:i:s'),
+			"date_update"	=> date('Y-m-d H:i:s'),
+		);
+		$this->db->insert('meta', $data);
+	}
 	function update_meta($id)
 	{
 		$data = array(
 			"title"			=> $this->input->post('title'),
 			"description"	=> $this->input->post('description'),
+			"keyword"		=> $this->input->post('keyword'),
 			"icon_32"		=> $this->input->post('icon_32'),
 			"icon_128"		=> $this->input->post('icon_128'),
 			"icon_192"		=> $this->input->post('icon_192'),
+			"logo"			=> $this->input->post('logo'),
 			"date_update"	=> date('Y-m-d H:i:s'),
 		);
 		$this->db->where('id', $id);
@@ -446,9 +595,15 @@ class Konten_model extends CI_Model
 	}
 
 	// ========================================= Show =========================================
-	function show($url)
+	function show_apk($kategori, $uri)
 	{
-		$data = $this->db->query("SELECT * FROM  post WHERE url = '$url'");
+		$data = $this->db->query("SELECT * FROM  post WHERE kategori = $kategori AND uri = '$uri'");
+		return $data->result_array();
+	}
+
+	function show_tutorial($uri)
+	{
+		$data = $this->db->query("SELECT * FROM  tutorial WHERE uri = '$uri'");
 		return $data->result_array();
 	}
 }

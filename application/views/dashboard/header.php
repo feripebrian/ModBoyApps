@@ -86,7 +86,7 @@
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">
-								<ion-icon name="game-controller"></ion-icon>
+								<ion-icon name="list-circle-sharp"></ion-icon>
 								<p>
 									KATEGORI GAME
 									<i class="right fas fa-angle-left"></i>
@@ -136,6 +136,21 @@
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">
+								<ion-icon name="pencil-sharp"></ion-icon>
+								<p>TUTORIAL<i class="right fas fa-angle-left"></i></p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<?php echo anchor('dashboard/tutorial/listtutorial', '<ion-icon name="list-circle"></ion-icon><p>List Tutorial</p>', 'class="nav-link"') ?>
+								</li>
+
+								<li class="nav-item">
+									<?php echo anchor('dashboard/tutorial/addtutorial', '<ion-icon name="add-circle"></ion-icon><p>Add Tutorial</p>', 'class="nav-link"') ?>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
 								<ion-icon name="list-circle"></ion-icon>
 								<p>
 									SLIDE
@@ -168,11 +183,28 @@
 								</li>
 							</ul>
 						</li>
-						
-						
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<ion-icon name="cog-sharp"></ion-icon>
+								<p>
+									META
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<?php echo anchor('dashboard/meta/listmeta', '<ion-icon name="list-circle"></ion-icon><p>List Meta</p>', 'class="nav-link"') ?>
+								</li>
+								<li class="nav-item">
+									<?php echo anchor('dashboard/meta/addmeta', '<ion-icon name="add-circle"></ion-icon><p>Add Meta</p>', 'class="nav-link"') ?>
+								</li>
+							</ul>
+						</li>
+
+
 						<li class="nav-header">LABELS</li>
 						<li class="nav-item">
-							<?php echo anchor('dashboard/meta/editmeta', '<i class="nav-icon far fa-circle text-info"></i><p>Meta</p>', 'class="nav-link"') ?>
+							<?php echo anchor('dashboard/sitemap/sitemap', '<i class="nav-icon far fa-circle text-info"></i><p>SITEMAP</p>', 'target="_blank" class="nav-link"') ?>
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">

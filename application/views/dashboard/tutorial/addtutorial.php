@@ -15,27 +15,13 @@
 			</div>
 		<?php } ?>
 		<div class="card-header">
-			<h3 class="card-title">Add Game</h3>
+			<h3 class="card-title">Add Tutorial</h3>
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<?php echo form_open('dashboard/game/addgames/game_add/', 'class="form-horizontal"') ?>
+		<?php echo form_open('dashboard/tutorial/addtutorial/tutorial_add/', 'class="form-horizontal"') ?>
 		<div class="card-body">
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Kategori Game</label>
-				<div class="col-sm-10">
-					<div class="form-group">
-						<?php
-						foreach ($kategori_game as $row) {
-							echo '<div class="custom-control custom-checkbox">';
-							echo form_checkbox('id_kategori[]', $row['id_kategori'], false, 'id="customCheckbox' . $row['id_kategori'] . '" class="custom-control-input"');
-							echo '<label for="customCheckbox' . $row['id_kategori'] . '" class="custom-control-label">' . $row['kategori'] . '</label>
-							</div>';
-						};
-						?>
-					</div>
-				</div>
-			</div>
+
 			<div class="form-group row">
 				<label for="inputjudul" class="col-sm-2 col-form-label">Judul</label>
 				<div class="col-sm-10">
@@ -64,12 +50,6 @@
 				<label for="inputuri" class="col-sm-2 col-form-label">URL</label>
 				<div class="col-sm-10">
 					<?php echo form_input('uri', '', 'class="form-control" id="inputuri" placeholder="URL"') ?>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="inputlink" class="col-sm-2 col-form-label">Link</label>
-				<div class="col-sm-10">
-					<?php echo form_input('link', '', 'class="form-control" id="inputlink" placeholder="Link"') ?>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -105,7 +85,7 @@
 				<div class="col-sm-10">
 					<?php
 					$options = array(
-						''	=> 'Pilih',
+						''    => 'Pilih',
 						'0' => 'Non Aktif',
 						'1' => 'Aktif',
 					);
@@ -117,7 +97,7 @@
 		<!-- /.card-body -->
 		<div class="card-footer">
 			<?php echo form_submit('submit', 'Submit', 'class="btn btn-info"') ?>
-			<?php echo anchor('dashboard/game/listgames', 'Cancel', 'class="btn btn-default float-right"') ?>
+			<?php echo anchor('dashboard/tutorial/listtutorial', 'Cancel', 'class="btn btn-default float-right"') ?>
 		</div>
 		<!-- /.card-footer -->
 		<?php echo form_close() ?>

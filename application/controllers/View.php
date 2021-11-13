@@ -8,41 +8,59 @@ class View extends CI_Controller
 	{
 	}
 
-	public function views_game()
+	public function apps($kategori, $uri)
 	{
-		$title = array(
-			'meta'			=> $this->konten_model->meta_show(),
-			'title'			=> 'ModBoyApk | Aplikasi',
-			'slide'			=> $this->konten_model->slide_front(),
-		);
+		$view = $this->konten_model->show_meta_apps($kategori, $uri);
+		foreach ($view as $v) {
+			$title = array(
+				'meta'		=> $this->konten_model->meta_show(),
+				'slide'		=> $this->konten_model->slide_front(),
+				'title' 	=> $v['title'],
+				'deskripsi' => $v['deskripsi'],
+				'keyword' 	=> $v['keyword'],
+				'icon_32' 	=> $v['icon_32'],
+				'logo' 		=> $v['logo'],
+
+			);
+		}
+
 		$data = array(
 			'game'			=> $this->konten_model->game_judul(),
 			'gamesearch'	=> $this->konten_model->game_front(),
 			'kategori'		=> $this->konten_model->kategori_front(),
 			'app'			=> $this->konten_model->app_front(),
+			'show'			=> $this->konten_model->show_apk($kategori, $uri),
 			'media'			=> $this->konten_model->media_front(),
 		);
 		$this->load->view('header', $title);
-		$this->load->view('views_game', $data);
+		$this->load->view('view', $data);
 		$this->load->view('foother');
 	}
 
-	public function views_apps()
+	public function tutorial($uri)
 	{
-		$title = array(
-			'meta'			=> $this->konten_model->meta_show(),
-			'title'			=> 'ModBoyApk | Aplikasi',
-			'slide'			=> $this->konten_model->slide_front(),
-		);
+		$view = $this->konten_model->show_meta_tutorial($uri);
+		foreach ($view as $v) {
+			$title = array(
+				'meta'		=> $this->konten_model->meta_show(),
+				'slide'		=> $this->konten_model->slide_front(),
+				'title' 	=> $v['title'],
+				'deskripsi' => $v['deskripsi'],
+				'keyword' 	=> $v['keyword'],
+				'icon_32' 	=> $v['icon_32'],
+				'logo' 		=> $v['logo'],
+			);
+		}
 		$data = array(
-			'app'			=> $this->konten_model->app_judul(),
-			'appsearch'		=> $this->konten_model->app_front(),
+			'game'			=> $this->konten_model->game_judul(),
+			'gamesearch'	=> $this->konten_model->game_front(),
 			'kategori'		=> $this->konten_model->kategori_front(),
-			'game'			=> $this->konten_model->game_front(),
+			'app'			=> $this->konten_model->app_front(),
+			'show'			=> $this->konten_model->show_tutorial($uri),
 			'media'			=> $this->konten_model->media_front(),
 		);
 		$this->load->view('header', $title);
-		$this->load->view('views_apps', $data);
+		$this->load->view('read', $data);
 		$this->load->view('foother');
 	}
 }

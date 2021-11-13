@@ -15,10 +15,10 @@
 						<div class="col-md-12">
 							<div role="tabpanel" class="tab-pane fade in active feat-sec">
 								<div class="col-md-2 tab-img">
-									<img src="<?php echo $row_game['gambar'] ?>" class="img-responsive" alt="<?php echo $row_game['judul']?>">
+									<img src="<?php echo $row_game['gambar'] ?>" class="img-responsive" alt="<?php echo $row_game['judul'] ?>">
 								</div>
 								<div class="col-md-8 tab">
-									<?php echo anchor('view/' . $row_game['url'], '<h5>' . $row_game['judul'] . '</h5>', '') ?>
+									<?php echo anchor('view/' . $row_game['kategori'] . '/' . $row_game['uri'], '<h5>' . $row_game['judul'] . '</h5>', '') ?>
 									<div class="line"></div>
 									<div class="clearfix"></div>
 									<p class="feat-sec"><?php echo $row_game['deskripsi_singkat'] ?></p>
@@ -62,7 +62,9 @@
 						<div class="col-md-12">
 							<div class="media service-box">
 								<div class="col-md-5">
-									<div class="pull-center"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>"> </div>
+									<div class="pull-center">
+										<img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>" alt="<?php echo $row_kategori['kategori'] ?>">
+									</div>
 								</div>
 								<div class="col-md-7">
 
@@ -81,9 +83,10 @@
 																<?php
 																$k = 1;
 																$id = $row_kategori['id_kategori'];
-																$query = $this->db->get_where('post', array('kategori' => $k, 'id_kategori' => $id, 'status' => 1));
-																$data = $query->result_array();
-
+																$array = array('kategori' => $k, 'id_kategori' => $id, 'status' => $k);
+																$this->db->from('post');
+																$this->db->like($array);
+																$data = $this->db->get()->result_array();
 																foreach ($data as $j) {
 																?>
 																	<div class="col-md-6 col-sm-6 col-xs-6">
@@ -92,7 +95,7 @@
 																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $j['judul'] ?>" class="img-circle img-responsive">
 																			</div>
 																			<div class="media-body">
-																				<h5><?php echo anchor('view/' . $j['url'], $j['judul'], '') ?></h5>
+																				<h5><?php echo anchor('view/' . $j['kategori'] . '/' . $j['uri'], $j['judul'], '') ?></h5>
 																				<p><?php echo  $j['versi'] ?></p>
 
 																			</div>
@@ -140,9 +143,8 @@
 			<div class="col-md-12">
 				<?php foreach ($app as $row_app) { ?>
 					<div class="col-md-3 blog-sec" style="padding-bottom: 10px;">
-						<div class="blog-info"> <img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" alt="">
-							<?php echo anchor('show/apps/' . $row_app['id_post'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
-							<p><?php echo $row_app['deskripsi_singkat'] ?></p>
+						<div class="blog-info"> <img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" alt="<?php echo $row_app['judul'] ?>" style="max-height: 100px;max-width: 100px;">
+							<?php echo anchor('view/' . $row_app['kategori'] . '/' . $row_app['uri'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
 							<div class="heading">
 								<a class="btn btn-danger" style="padding: 10px 100px;" target="_blank" href="<?php echo $row_app['link'] ?>">Download</a>
 							</div>

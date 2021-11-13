@@ -1,74 +1,27 @@
 <!--Features-Section-Start-->
-<section id="features">
+<section>
 	<div class="container">
-		<div class="col-md-12 ">
-			<div class="heading">
-				<h2>Game</h2>
-				<div class="line">
-
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 ">
-			<!-- Large modal -->
-			<?php for ($c = 'A', $j = 1; $j <= 26; $j++) {
-				echo 	'
-					<button style="margin: 1px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg' . $c . '">' . $c . '</button>
-					<div class="modal fade bs-example-modal-lg' . $c . '" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-						<div class="modal-dialog modal-lg" role="document">
-							<div class="modal-content">
-								<div class="modal-body">
-									<div class="features-sec">
-										<div class="row">';
-			?>
-				<?php
-				$query = $this->db->get_where('post', array('kategori' => 1, 'alfabet' => $c, 'status' => 1));
-				$data = $query->result_array();
-				foreach ($data as $asd) {
-				?>
-					<div class="col-md-6 col-sm-6 col-xs-6">
-						<div class="media service-box" style="margin: 5px 0px;">
-							<div class="pull-left">
-								<img src="<?php echo $asd['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $asd['judul'] ?>" class="img-circle img-responsive">
-							</div>
-							<div class="media-body">
-								<h5><?php echo anchor('view/' . $asd['kategori'] . '/' . $asd['uri'], $asd['judul'], '') ?></h5>
-								<p><?php echo  $asd['versi'] ?></p>
-
-							</div>
-						</div>
-					</div>
-
-				<?php } ?>
-			<?php
-				echo '				
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					';
-				$c++;
-			} ?>
-			<input class="form-control" id="myInput" type="text" placeholder="Search Game..">
+		<div class="col-md-12" style="margin: 10px 0px;">
+			<input class="form-control" id="myInput" type="text" placeholder="Search Tutorial..">
 			<br>
 			<div class="col-md-12" style="height: 500px; overflow-y: scroll;">
 				<table class="table table-hover table-striped">
-					<thead>
-						<tr>
-							<th colspan="2">Nama Game</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody id="myTable" style="text-align: left;">
-						<?php foreach ($gamesearch as $search) { ?>
+					<tbody id="myTable">
+						<?php foreach ($tutorial as $search) { ?>
 							<tr>
-								<td><img src="<?php echo $search['gambar'] ?>" style="max-width: 45px;" alt="<?php echo $search['judul'] ?>" class="img-circle img-responsive"></td>
-								<td><?php echo $search['judul'] ?></td>
 								<td>
-									<?php echo anchor('view/' . $search['kategori'] . '/' . $search['uri'], '<i class="fa fa-file-o"></i>', 'class="btn btn-info" style="padding: 10px;"') ?>
-									<?php echo anchor($search['link'], '<i class="fa fa-download"></i>', ' class="btn btn-success" style="padding: 10px;" target="_blank"') ?>
+									<div class="col-md-12">
+										<div role="tabpanel" class="tab-pane fade in active feat-sec">
+											<div class="col-md-2 tab-img">
+												<img src="<?php echo $search['gambar'] ?>" class="img-responsive" style="max-height: 100px;" alt="<?php echo $search['judul'] ?>">
+											</div>
+											<div class="col-md-10 tab">
+												<?php echo anchor('read/' . $search['uri'], '<h5>' . $search['judul'] . '</h5>', '') ?>
+												<div class="clearfix"></div>
+												<p class="feat-sec"><?php echo $search['deskripsi_singkat'] ?></p>
+											</div>
+										</div>
+									</div>
 								</td>
 							</tr>
 						<?php } ?>
@@ -78,6 +31,57 @@
 		</div>
 	</div>
 
+</section>
+
+
+
+
+<!--Testimonials-Section-Start-->
+<section id="testimonials" class="parallex">
+	<div class="container">
+	</div>
+</section>
+<!--Features-Section-Start-->
+<section id="features">
+	<div class="container">
+		<div class="col-md-12 ">
+			<div class="heading">
+				<h2>Game</h2>
+				<div class="line"></div>
+			</div>
+		</div>
+
+		<div class="col-md-12 ">
+			<div class="tab-content">
+				<div class="row">
+					<?php foreach ($game as $row_game) { ?>
+						<div class="col-md-12">
+							<div role="tabpanel" class="tab-pane fade in active feat-sec">
+								<div class="col-md-2 tab-img">
+									<img src="<?php echo $row_game['gambar'] ?>" class="img-responsive" alt="<?php echo $row_game['judul'] ?>">
+								</div>
+								<div class="col-md-8 tab">
+									<?php echo anchor('view/' . $row_game['kategori'] . '/' . $row_game['uri'], '<h5>' . $row_game['judul'] . '</h5>', '') ?>
+									<div class="line"></div>
+									<div class="clearfix"></div>
+									<p class="feat-sec"><?php echo $row_game['deskripsi_singkat'] ?></p>
+									<div class="heading">
+										<a class="btn btn-danger" target="_blank" style="padding: 10px 100px;" href="<?php echo $row_game['link'] ?>">Download</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 ">
+			<div class="container">
+				<div class="heading" style="padding-top: 40px;">
+					<a class="btn btn-info" style="padding: 10px 100px;" href="game">Lihat Game</a>
+				</div>
+			</div>
+		</div>
 </section>
 
 <!--About-Sec-2-Start-->
@@ -101,7 +105,9 @@
 						<div class="col-md-12">
 							<div class="media service-box">
 								<div class="col-md-5">
-									<div class="pull-center"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>" alt="<?php echo $row_kategori['kategori'] ?>"> </div>
+									<div class="pull-center">
+										<img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>" alt="<?php echo $row_kategori['kategori'] ?>">
+									</div>
 								</div>
 								<div class="col-md-7">
 
@@ -160,13 +166,12 @@
 		</div>
 	</div>
 </section>
+
 <!--Testimonials-Section-Start-->
 <section id="testimonials" class="parallex">
 	<div class="container">
 	</div>
 </section>
-
-
 
 <!--Blog-Section-Start-->
 <section id="blog">
@@ -181,17 +186,14 @@
 			<div class="col-md-12">
 				<?php foreach ($app as $row_app) { ?>
 					<div class="col-md-3 blog-sec" style="padding-bottom: 10px;">
-						<div class="blog-info">
-							<img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" style="max-height: 100px;max-width: 100px;" alt="<?php echo $row_app['judul'] ?>">
-							</a>
+						<div class="blog-info"> <img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" alt="<?php echo $row_app['judul'] ?>" style="max-height: 100px;max-width: 100px;">
 							<?php echo anchor('view/' . $row_app['kategori'] . '/' . $row_app['uri'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
 							<div class="heading">
-								<?php echo anchor($row_app['link'], 'Download', 'class="btn btn-danger" style="padding: 10px 100px;"') ?>
+								<a class="btn btn-danger" style="padding: 10px 100px;" target="_blank" href="<?php echo $row_app['link'] ?>">Download</a>
 							</div>
 						</div>
 					</div>
 				<?php } ?>
-
 			</div>
 		</div>
 		<div class="col-md-12 ">
@@ -203,3 +205,9 @@
 		</div>
 	</div>
 </section>
+
+<!--About-Sec-2-Start-->
+<div class="bg-sec">
+	<div class="container">
+	</div>
+</div>

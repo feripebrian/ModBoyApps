@@ -847,7 +847,7 @@ ul.nav li.active a:before {
 }
 /*Testimonials-stylesheets-include-here*/
 #testimonials {
-	background-image:url(../images/Testimonials/01.jpg);
+	background-image:url(../../../source/BG/01.jpg);
 	height:450px;
 	text-align:center;
 }

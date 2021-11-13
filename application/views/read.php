@@ -10,11 +10,9 @@
 									<h3 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"><?php echo $sh['judul'] ?></h3>
 								</div>
 								<div class="col-md-4">
-									<?php echo anchor($sh['link'], 'Download', 'class="btn btn-info" style="padding: 10px 100px;" target="_blank"') ?>
 								</div>
 							</div>
 							<?php echo $sh['deskripsi'] ?>
-							<?php echo anchor($sh['link'], 'Download', 'class="btn btn-info" style="padding: 10px 100px;" target="_blank"') ?>
 						<?php } ?>
 
 					</div>
@@ -148,7 +146,7 @@
 														<img src="<?php echo $row_app['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $row_app['judul'] ?>" class="img-circle img-responsive">
 													</div>
 													<div class="media-body">
-														<h5><?php echo anchor('view/' . $row_app['kategori'] . '/' . $row_app['uri'], $row_app['judul'], '') ?></h5>
+														<h5><?php echo anchor('view' . $row_app['uri'], $row_app['judul'], '') ?></h5>
 														<p><?php echo  $row_app['versi'] ?></p>
 													</div>
 												</div>

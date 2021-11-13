@@ -29,6 +29,12 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label for="inputkeyword" class="col-sm-2 col-form-label">Keyword</label>
+					<div class="col-sm-10">
+						<?php echo form_input('keyword', $row['keyword'], 'class="form-control" id="inputkeyword" placeholder="Keyword"') ?>
+					</div>
+				</div>
+				<div class="form-group row">
 					<label for="inputdeskripsisingkat" class="col-sm-2 col-form-label">Deskripsi Singkat</label>
 					<div class="col-sm-10">
 						<?php echo form_textarea('deskripsi_singkat', $row['deskripsi_singkat'], 'class="form-control" id="inputdeskripsisingkat" placeholder="Deskripsi Singkat"') ?>
@@ -38,6 +44,12 @@
 					<label class="col-sm-2 col-form-label">Deskripsi</label>
 					<div class="col-sm-10">
 						<?php echo form_textarea('deskripsi', $row['deskripsi'], 'class="form-control" id="editor-ckeditor" placeholder="Deskripsi"') ?>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputurl" class="col-sm-2 col-form-label">URL</label>
+					<div class="col-sm-10">
+						<?php echo form_input('uri', $row['uri'], 'class="form-control" id="inputurl" placeholder="URL"') ?>
 					</div>
 				</div>
 				<div class="form-group row">
