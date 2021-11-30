@@ -20,9 +20,15 @@ class Main_page extends CI_Controller
 			);
 		}
 		$data = array(
-			'game'			=> $this->konten_model->game_front(),
+			'psx'			=> $this->konten_model->psx_home(),
+			'ps2'			=> $this->konten_model->ps2_home(),
+			'psp'			=> $this->konten_model->psP_home(),
+			'game'			=> $this->konten_model->game_home(),
+			'apk'			=> $this->konten_model->apk_home(),
+			'tutorial'		=> $this->konten_model->tutorial_home(),
+			'rom_kat'		=> $this->konten_model->emulator_kategori_front(),
+			'kategori_emu'	=> $this->konten_model->emulator_kategori_home(),
 			'kategori'		=> $this->konten_model->kategori_front(),
-			'app'			=> $this->konten_model->app_front(),
 			'media'			=> $this->konten_model->media_front(),
 		);
 		$this->load->view('header', $title);

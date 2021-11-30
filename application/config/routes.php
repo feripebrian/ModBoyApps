@@ -49,11 +49,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] 	= 'main_page';
-$route['game'] 					= 'list_app/views_game';
-$route['apk'] 					= 'list_app/views_apps';
-$route['tutorial'] 				= 'list_app/views_tutorial';
-$route['view/(:any)/(:any)'] 	= 'view/apps/$1/$2';
-$route['read/(:any)'] 			= 'view/tutorial/$1';
-$route['404_override'] 			= '';
-$route['translate_uri_dashes'] 	= FALSE;
+$route['default_controller'] 		= 'main_page';
+$route['game'] 						= 'list_app/views_game';
+$route['apk'] 						= 'list_app/views_apps';
+$route['tutorial'] 					= 'list_app/views_tutorial';
+$route['emulator'] 					= 'list_app/views_emulator_kat';
+$route['emulator/(:any)'] 			= 'list_app/views_emulator/$1';
+$route['rom'] 						= 'list_app/views_rom_kat';
+$route['rom/(:any)'] 				= 'list_app/views_rom/$1';
+$route['view/(:any)/(:any)'] 		= 'view/apps/$1/$2';
+$route['game/(:any)/(:any)'] 		= 'view/apps/$1/$2';
+$route['apk/(:any)/(:any)'] 		= 'view/apps/$1/$2';
+$route['tutorial/(:any)'] 			= 'view/tutorial/$1';
+$route['emulator/(:any)/(:any)'] 	= 'view/emulator/$1/$2';
+$route['rom/(:any)/(:any)'] 		= 'view/rom/$1/$2';
+$route['404_override'] 				= '';
+$route['translate_uri_dashes'] 		= FALSE;

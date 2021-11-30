@@ -2,18 +2,10 @@
 <section id="features">
 	<div class="container">
 		<div class="col-md-12 ">
-			<div class="heading">
-				<h2>Game</h2>
-				<div class="line">
-
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 ">
 			<!-- Large modal -->
 			<?php for ($c = 'A', $j = 1; $j <= 26; $j++) {
 				echo 	'
-					<button style="margin: 1px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg' . $c . '">' . $c . '</button>
+					<button style="margin: 1px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg' . $c . '">' . $c . '</button>
 					<div class="modal fade bs-example-modal-lg' . $c . '" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 						<div class="modal-dialog modal-lg" role="document">
 							<div class="modal-content">
@@ -32,9 +24,7 @@
 								<img src="<?php echo $asd['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $asd['judul'] ?>" class="img-circle img-responsive">
 							</div>
 							<div class="media-body">
-								<h5><?php echo anchor('view/' . $asd['kategori'] . '/' . $asd['uri'], $asd['judul'], '') ?></h5>
-								<p><?php echo  $asd['versi'] ?></p>
-
+								<h4><?php echo anchor('game/' . $asd['kategori'] . '/' . $asd['uri'], $asd['judul'], '') ?></h4>
 							</div>
 						</div>
 					</div>
@@ -51,33 +41,113 @@
 					';
 				$c++;
 			} ?>
-			<input class="form-control" id="myInput" type="text" placeholder="Search Game..">
-			<br>
-			<div class="col-md-12" style="height: 500px; overflow-y: scroll;">
-				<table class="table table-hover table-striped">
-					<thead>
-						<tr>
-							<th colspan="2">Nama Game</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody id="myTable" style="text-align: left;">
-						<?php foreach ($gamesearch as $search) { ?>
-							<tr>
-								<td><img src="<?php echo $search['gambar'] ?>" style="max-width: 45px;" alt="<?php echo $search['judul'] ?>" class="img-circle img-responsive"></td>
-								<td><?php echo $search['judul'] ?></td>
-								<td>
-									<?php echo anchor('view/' . $search['kategori'] . '/' . $search['uri'], '<i class="fa fa-file-o"></i>', 'class="btn btn-info" style="padding: 10px;"') ?>
-									<?php echo anchor($search['link'], '<i class="fa fa-download"></i>', ' class="btn btn-success" style="padding: 10px;" target="_blank"') ?>
-								</td>
-							</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			</div>
 		</div>
 	</div>
+</section>
 
+<section id="service">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-10">
+				<input class="form-control" id="myInput" type="text" placeholder="Search Game..">
+				<br>
+				<div class="col-md-12" style="height: 500px; overflow-y: scroll;">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th colspan="2">Nama Game</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="myTable" style="text-align: left;">
+							<?php foreach ($gamesearch as $search) { ?>
+								<tr>
+									<td><img src="<?php echo $search['gambar'] ?>" style="max-width: 45px;" alt="<?php echo $search['judul'] ?>" class="img-circle img-responsive"></td>
+									<td><?php echo $search['judul'] ?></td>
+									<td>
+										<?php echo anchor('game/' . $search['kategori'] . '/' . $search['uri'], '<i class="fa fa-file-o"></i>', 'class="btn btn-info" style="padding: 10px;"') ?>
+										<?php echo anchor($search['link'], '<i class="fa fa-download"></i>', ' class="btn btn-success" style="padding: 10px;" target="_blank"') ?>
+									</td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-2">
+				<div class="row" id="fun-facts" style="border: 0px solid #999;border-radius: 10px;box-shadow: 2px 2px 5px #888888;margin-bottom: 10px;">
+					<div class="col-md-12">
+						<h3>Kategori</h3>
+						<div class="pull-center">
+							<ul class="list-unstyled">
+								<?php foreach ($kategori as $row_kategori) { ?>
+									<li>
+										<div class="features-sec">
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
+													<div class="media service-box" style="margin: 5px 0px;">
+														<div class="pull-left">
+															<img src="<?php echo $row_kategori['gambar'] ?>" style="width: 40px; height: 40px;" alt="<?php echo $row_kategori['kategori'] ?>" class="img-circle img-responsive">
+														</div>
+														<div class="media-body">
+															<a data-toggle="modal" data-target=".bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>">
+																<h4><?php echo $row_kategori['kategori'] ?></h4>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<div class="modal fade bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												</div>
+												<div class="modal-body">
+													<div class="features-sec">
+														<div class="row">
+															<?php
+															$k = 1;
+															$id = $row_kategori['id_kategori'];
+															$array = array('kategori' => $k, 'id_kategori' => $id, 'status' => $k);
+															$this->db->from('post');
+															$this->db->like($array);
+															$data = $this->db->get()->result_array();
+															foreach ($data as $j) {
+															?>
+																<div class="col-md-6 col-sm-6 col-xs-6">
+																	<div class="media service-box" style="margin: 5px 0px;">
+																		<div class="pull-left">
+																			<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $j['judul'] ?>" class="img-circle img-responsive">
+																		</div>
+																		<div class="media-body">
+																			<h4><?php echo anchor('game/' . $j['kategori'] . '/' . $j['uri'], $j['judul'], '') ?></h4>
+																		</div>
+																	</div>
+																</div>
+
+															<?php } ?>
+														</div>
+													</div>
+
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								<?php } ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </section>
 
 <!--About-Sec-2-Start-->
@@ -86,120 +156,31 @@
 	</div>
 </div>
 <!--Service-Section-Start-->
-<section id="service">
-	<div class="container">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="heading">
-				<h2>Kategori Game</h2>
-				<div class="line"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="features-sec">
-				<?php foreach ($kategori as $row_kategori) { ?>
-					<div class="col-md-3 col-sm-6 col-xs-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="5ms">
-						<div class="col-md-12">
-							<div class="media service-box">
-								<div class="col-md-5">
-									<div class="pull-center"> <img style="max-height: 64px;" src="<?php echo $row_kategori['gambar'] ?>" alt="<?php echo $row_kategori['kategori'] ?>"> </div>
-								</div>
-								<div class="col-md-7">
-
-									<div class="media-body">
-										<button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>"><?php echo $row_kategori['kategori'] ?></button>
-										<div class="modal fade bs-example-modal-lg<?php echo $row_kategori['id_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-											<div class="modal-dialog modal-lg" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title">Modal title</h4>
-													</div>
-													<div class="modal-body">
-														<div class="features-sec">
-															<div class="row">
-																<?php
-																$k = 1;
-																$id = $row_kategori['id_kategori'];
-																$array = array('kategori' => $k, 'id_kategori' => $id, 'status' => $k);
-																$this->db->from('post');
-																$this->db->like($array);
-																$data = $this->db->get()->result_array();
-																foreach ($data as $j) {
-																?>
-																	<div class="col-md-6 col-sm-6 col-xs-6">
-																		<div class="media service-box" style="margin: 5px 0px;">
-																			<div class="pull-left">
-																				<img src="<?php echo $j['gambar'] ?>" style="width: 75px; height: 75px;" alt="<?php echo $j['judul'] ?>" class="img-circle img-responsive">
-																			</div>
-																			<div class="media-body">
-																				<h5><?php echo anchor('view/' . $j['kategori'] . '/' . $j['uri'], $j['judul'], '') ?></h5>
-																				<p><?php echo  $j['versi'] ?></p>
-
-																			</div>
-																		</div>
-																	</div>
-
-																<?php } ?>
-															</div>
-														</div>
-
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				<?php } ?>
-			</div>
-		</div>
-	</div>
-</section>
-<!--Testimonials-Section-Start-->
-<section id="testimonials" class="parallex">
-	<div class="container">
-	</div>
-</section>
-
-
 
 <!--Blog-Section-Start-->
 <section id="blog">
+
 	<div class="container">
 		<div class="col-md-12 ">
 			<div class="heading">
-				<h2>APK</h2>
-				<div class="line"></div>
+				<h2>APPS</h2>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				<?php foreach ($app as $row_app) { ?>
-					<div class="col-md-3 blog-sec" style="padding-bottom: 10px;">
-						<div class="blog-info">
-							<img src="<?php echo $row_app['gambar'] ?>" class="img-responsive" style="max-height: 100px;max-width: 100px;" alt="<?php echo $row_app['judul'] ?>">
-							</a>
-							<?php echo anchor('view/' . $row_app['kategori'] . '/' . $row_app['uri'], '<h5>' . $row_app['judul'] . '</h5>', '') ?>
-							<div class="heading">
-								<?php echo anchor($row_app['link'], 'Download', 'class="btn btn-danger" style="padding: 10px 100px;"') ?>
+			<div class="col-xs-12 col-md-12">
+				<div class="features-sec">
+					<?php foreach ($app as $row_app) { ?>
+						<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp">
+							<div class="media service-box">
+								<div class="pull-left"> <img style="max-height: 64px;" src="<?php echo $row_app['gambar'] ?>" class="img-circle img-responsive" alt="<?php echo $row_app['judul'] ?>"> </div>
+								<div class="media-body">
+									<?php echo anchor('apk/' . $row_app['kategori'] . '/' . $row_app['uri'], '<h4>' . $row_app['judul'] . '</h4>', '') ?>
+								</div>
 							</div>
 						</div>
-					</div>
-				<?php } ?>
+					<?php } ?>
 
-			</div>
-		</div>
-		<div class="col-md-12 ">
-			<div class="container">
-				<div class="heading" style="padding-top: 40px;">
-					<a class="btn btn-info" style="padding: 10px 100px;" href="apk">Lihat Apps</a>
 				</div>
 			</div>
 		</div>
-	</div>
 </section>

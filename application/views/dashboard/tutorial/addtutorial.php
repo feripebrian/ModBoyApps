@@ -21,11 +21,10 @@
 		<!-- form start -->
 		<?php echo form_open('dashboard/tutorial/addtutorial/tutorial_add/', 'class="form-horizontal"') ?>
 		<div class="card-body">
-
 			<div class="form-group row">
-				<label for="inputjudul" class="col-sm-2 col-form-label">Judul</label>
+				<label for="inputtitle" class="col-sm-2 col-form-label">Title</label>
 				<div class="col-sm-10">
-					<?php echo form_input('judul', '', 'class="form-control" id="inputjudul" placeholder="Judul"') ?>
+					<?php echo form_input('title', '', 'class="form-control" id="inputtitle" class="form-control" placeholder="Title Max 70 Karakter" maxlength="70"') ?>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -35,9 +34,16 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="inputdeskripsisingkat" class="col-sm-2 col-form-label">Deskripsi Singkat</label>
+				<label for="inputdescription" class="col-sm-2 col-form-label">Description</label>
 				<div class="col-sm-10">
-					<?php echo form_textarea('deskripsi_singkat', '', 'class="form-control" id="inputdeskripsisingkat" placeholder="Deskripsi Singkat"') ?>
+					<?php echo form_textarea('deskripsi_singkat', '', 'class="form-control" onkeyup="count_up(this);" id="inputdescription" placeholder="Description Max 160 Karakter" maxlength="160"') ?>
+					Jumlah Karakter <span class="text-muted pull-right" id="count1"> 0</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputjudul" class="col-sm-2 col-form-label">Judul</label>
+				<div class="col-sm-10">
+					<?php echo form_input('judul', '', 'class="form-control" id="inputjudul" class="form-control" placeholder="Judul Max 70 Karakter" maxlength="70"') ?>
 				</div>
 			</div>
 			<div class="form-group row">

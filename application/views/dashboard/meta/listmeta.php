@@ -22,7 +22,7 @@
 			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>No</th>
+						<th>Id</th>
 						<th>Title</th>
 						<th>description</th>
 						<th>keyword</th>
@@ -35,7 +35,7 @@
 					<?php $i = 1;
 					foreach ($meta as $row) { ?>
 						<tr>
-							<td><?php echo $i++; ?></td>
+							<td><?php echo $row['id'] ?></td>
 							<td><?php echo $row['title'] ?></td>
 							<td><?php echo $row['description'] ?></td>
 							<td><?php echo $row['keyword'] ?></td>
@@ -51,7 +51,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th>No</th>
+						<th>Id</th>
 						<th>Title</th>
 						<th>description</th>
 						<th>keyword</th>

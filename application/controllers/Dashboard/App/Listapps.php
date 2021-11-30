@@ -13,7 +13,8 @@ class Listapps extends CI_Controller
 	{
 		$title = array('title' => 'ModBoyApps | List Apps');
 		$data = array(
-			'app'	=> $this->konten_model->app_show()
+			'app'	=> $this->konten_model->app_show(),
+			'kategori'	=> $this->konten_model->meta_show(),
 		);
 		$this->load->view('dashboard/header', $title);
 		$this->load->view('dashboard/app/listapps', $data);

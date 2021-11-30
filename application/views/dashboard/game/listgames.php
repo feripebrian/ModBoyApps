@@ -22,10 +22,10 @@
 			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>No</th>
 						<th>ID Post</th>
-						<th>Judul</th>
+						<th>Id Kategori</th>
 						<th>Kategori</th>
+						<th>Judul</th>
 						<th>Upload</th>
 						<th>Update</th>
 						<th>Status</th>
@@ -33,13 +33,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php $i = 1;
+					<?php
 					foreach ($game as $row) { ?>
 						<tr>
-							<td><?php echo $i++; ?></td>
 							<td><?php echo $row['id_post'] ?></td>
-							<td><?php echo $row['judul'] ?></td>
 							<td><?php echo $row['kategori'] ?></td>
+							<td>
+								<?php foreach ($kategori as $kat) {
+									if ($kat['id'] == $row['kategori']) {
+										echo $kat['kategori'];
+									}
+								} ?>
+							</td>
+							<td><?php echo $row['judul'] ?></td>
 							<td><?php echo $row['date_upload'] ?></td>
 							<td><?php echo $row['date_update'] ?></td>
 							<td>
@@ -64,10 +70,10 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th>No</th>
 						<th>ID Post</th>
-						<th>Judul</th>
+						<th>Id Kategori</th>
 						<th>Kategori</th>
+						<th>Judul</th>
 						<th>Upload</th>
 						<th>Update</th>
 						<th>Status</th>

@@ -14,14 +14,27 @@ class Sitemap extends CI_Controller
 	public function index()
 	{
 
-		$post 		= $this->sitemap->apk();
+		$game 		= $this->sitemap->game();
+		$apk 		= $this->sitemap->apk();
 		$tutorial 	= $this->sitemap->tutorial();
+		$emulator 	= $this->sitemap->emulator();
+		$rom 		= $this->sitemap->rom();
 
 		$data = [
-			'post'   	=> $post,
-			'tutorial'	=> $tutorial
+			'game'   	=> $game,
+			'apk'   	=> $apk,
+			'tutorial'	=> $tutorial,
+			'emulator'	=> $emulator,
+			'rom'		=> $rom,
 		];
 
 		$this->load->view('dashboard/sitemap/index', $data);
+	}
+	public function sit()
+	{
+		$title = array('title' => 'ModBoyApps | Sitemap');
+		$this->load->view('dashboard/header', $title);
+		$this->load->view('dashboard/sitemap/sitemap');
+		$this->load->view('dashboard/foother');
 	}
 }

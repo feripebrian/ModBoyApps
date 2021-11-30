@@ -127,7 +127,7 @@ color: #FFF;
 p {
 	font-size:13px;
 	color:#666;
-	font-weight:bolder;
+	font-weight:"";
 	line-height:25px;
 	font-family: 'open_sansregular';
 }
@@ -135,31 +135,40 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
  font-family: 'helvetica_ce_55_romanregular';
 }
 h1 {
-	color:#fff;
-	font-size:51px;
+	color:#000;
+	font-size:18px;
 	text-transform:uppercase;
+	font-weight:bolder;
 }
 h2 {
-	color:#555;
-	font-size:35px;
+	color:#000;
+	font-size:16px;
 	text-transform:uppercase;
 	font-weight:bolder;
 }
 h3 {
-	color:#333;
-	font-size:23px;
+	color:#000;
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:bolder;
 }
 h4 {
-	color:#555;
-	font-size:21px;
+	color:#000;
+	font-size:12px;
 	text-transform:uppercase;
+	font-weight:bolder;
 }
 h5 {
-	color:#333;
-	font-size:18px;
+	color:#000;
+	font-size:10px;
+	text-transform:uppercase;
+	font-weight:bolder;
 }
 h6 {
-	font-size:16px;
+	color:#000;
+	font-size:8px;
+	text-transform:uppercase;
+	font-weight:bolder;
 }
 strong {
 	font-weight:bolder;
@@ -229,7 +238,7 @@ a.btn-send:hover {
 }
 /*Navigation-stylesheets-include-here*/
 .navbar-default {
-	background:rgba(248, 248, 248, 0);
+	background:rgba(0, 0, 0, 0.8);
 	border:rgba(248, 248, 248, 0);
 	padding:5px 5px;
 }
@@ -435,8 +444,8 @@ ul.nav li.active a:before {
 }
 /*Service-stylesheets-include-here*/
 #service {
-	text-align:center;
-	padding:2% 0%;
+	text-align:left;
+	padding:1% 0%;
 }
 #features-sec {
 	padding: 100px 0;
@@ -448,7 +457,7 @@ ul.nav li.active a:before {
 	padding: 100px 0 75px;
 }
 .media.service-box {
-	margin: 25px 0;
+	margin: 10px 0;
 }
 .media.service-box .pull-left {
 	margin-right: 20px;
@@ -516,8 +525,8 @@ ul.nav li.active a:before {
 }
 /*Features-stylesheets-include-here*/
 #features {
-	text-align:center;
-	padding:2% 0%;
+	text-align:left;
+	padding:1% 0%;
 }
 #features .nav-tabs {
 	display: inline-block;
@@ -1034,7 +1043,7 @@ label {
 	margin:0px 0px 20px 0px;
 }
 .form-group {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 textarea.form-control {
 	min-height: 120px;
@@ -1042,8 +1051,6 @@ textarea.form-control {
 }
 .form-control {
 	border: 1px solid #ccc;
-	height: 35px;
-	border-radius: 0;
 	box-shadow: none;
 }
 /*Footer-stylesheets-include-here*/

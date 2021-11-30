@@ -12,7 +12,8 @@ class Listgames extends CI_Controller
 	{
 		$title = array('title' => 'ModBoyApps | List Game');
 		$data = array(
-			'game'	=> $this->konten_model->game_show(),
+			'game'		=> $this->konten_model->game_show(),
+			'kategori'	=> $this->konten_model->meta_show(),
 		);
 		$this->load->view('dashboard/header', $title);
 		$this->load->view('dashboard/game/listgames', $data);
